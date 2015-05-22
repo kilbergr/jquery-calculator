@@ -1,19 +1,7 @@
-var reset = function(){
-	var	leftArr = [];
-	var rightArr =[];
-	var totalArr = [];
-	var leftVal = 0;
-	var rightVal = 0;
-
-	};
-
 $(function(){
-
 	var	leftArr = [];
 	var rightArr =[];
 	var totalArr = [];
-	var leftVal = 0;
-	var rightVal = 0;
 	var total = 0;
 
 	var operators = {
@@ -29,8 +17,7 @@ $(function(){
 			leftArr = [];
 			rightArr =[];
 			totalArr = [];
-			leftVal = 0;
-			rightVal = 0;
+			total=0;
 			}
 		
 		else if ($(e.target).hasClass("operator")) {
@@ -44,23 +31,19 @@ $(function(){
 					total = operators.sub(totalArr[0], totalArr[2]);
 					$("#screen").append("p").html(total);
 				}
-				if(totalArr[1]=="÷") {
-					total = operators.divide(totalArr[0], totalArr[2]);
-					$("#screen").append("p").html(total);
-				}
 				if(totalArr[1]==="x"){
 					total = operators.mult(totalArr[0], totalArr[2]);
 					$("#screen").append("p").html(total);
 				}
-				
-					
-					leftArr = [];
-					rightArr =[];
-					totalArr = [];
-					leftVal = 0;
-					rightVal = 0;
-					total = 0;
+				if(totalArr[1]==="÷"){
+					total = operators.divide(totalArr[0], totalArr[2]);
+					$("#screen").append("p").html(total);
+				}
+			leftArr = [total];
+			rightArr =[];
+			totalArr = [];
 			}
+
 			else{
 				$("#screen").append(opValue).clone();
 				totalArr[1] = opValue;	
@@ -76,10 +59,15 @@ $(function(){
 				totalArr[2] = parseInt(rightArr.join(""), 10);
 			}
 			else {
-				var digitValue = $(e.target).html();
-				$("#screen").append(digitValue).clone();
-				leftArr.push(digitValue);
-				totalArr[0] = parseInt(leftArr.join(""), 10);
+				if(leftArr[0]){
+					totalArr[0]=parseInt(leftArr, 10);
+				}
+				else{
+					var digitValue = $(e.target).html();
+					$("#screen").append(digitValue).clone();
+					leftArr.push(digitValue);
+					totalArr[0] = parseInt(leftArr.join(""), 10);
+				}	
 			}
 
 		}	
