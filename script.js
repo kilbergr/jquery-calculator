@@ -11,7 +11,7 @@ $(function(){
 		divide: function(a, b){return(a/b)}
 	}
 
-	$("#button-container").click(function(e){
+	$(".buttons").click(function(e){
 		if(e.target.id==="cancel"){
 			$("#screen").append("p").html("");
 			leftArr = [];
@@ -59,15 +59,10 @@ $(function(){
 				totalArr[2] = parseInt(rightArr.join(""), 10);
 			}
 			else {
-				if(leftArr[0]){
-					totalArr[0]=parseInt(leftArr, 10);
-				}
-				else{
-					var digitValue = $(e.target).html();
-					$("#screen").append(digitValue).clone();
-					leftArr.push(digitValue);
-					totalArr[0] = parseInt(leftArr.join(""), 10);
-				}	
+				var digitValue = $(e.target).html();
+				$("#screen").append(digitValue).clone();
+				leftArr.push(digitValue);
+				totalArr[0] = parseInt(leftArr.join(""), 10);
 			}
 
 		}	
