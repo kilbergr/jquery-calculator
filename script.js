@@ -35,6 +35,8 @@ $(function(){
 					total = operators.mult(totalArr[0], totalArr[2]);
 					$("#screen").append("p").html(total);
 				}
+
+				//division nonfunctional but NO idea why
 				if(totalArr[1]==="÷"){
 					total = operators.divide(totalArr[0], totalArr[2]);
 					$("#screen").append("p").html(total);
